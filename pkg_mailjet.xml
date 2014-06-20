@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="package" version="3.0">
+    <name>Mailjet Package</name>
+    <author>Mailjet SAS</author>
+    <authorUrl>http://www.mailjet.com</authorUrl>
+    <authorEmail>plugins@mailjet.com</authorEmail>
+    <creationDate>June 2014</creationDate>
+    <url>http://www.mailjet.com/</url>
+    <version>3.0.0</version>
+    <packagename>mailjet</packagename>
+    <packager>Mailjet SAS</packager>
+    <packagerurl>http://www.mailjet.com/</packagerurl>
+    <copyright>Copyright (C) 2014 Mailjet SAS.</copyright>
+    <license>MIT License</license>
+    <description><![CDATA[
+        <img style='float:left' src='https://fr.mailjet.com/images/theme/v1/logos/head_logo_small.png' border='0'>
+        <b>Mailjet</b> puts your e-mail delivery and traceability at ease. Simply send, we take care of the rest.
+        ]]></description>
+    <update></update>
+    <files folder="packages">
+        <file type="component" id="com_mailjet" >com_mailjet.zip</file>
+        <file type="module" id="mod_mailjet" client="site">mod_mailjet.zip</file>
+    </files>
+</extension>
