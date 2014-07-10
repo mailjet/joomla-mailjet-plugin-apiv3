@@ -78,6 +78,6 @@ Once your Mailjet plugin is installed, click on "Appearance" in the left-side me
 
 Changelog
 
-= 3.0.0 =
+= 3.0.1 =
 
 The plugin has been updated to use contact, campaign and stats iFrames.  The update also includes compatibility with all Mailjet v3 accounts.  Any historical Mailjet v1 accounts will need to use the v1 version of the plug-in (https://www.mailjet.com/plugin/joomla.htm)
