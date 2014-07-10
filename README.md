@@ -16,10 +16,11 @@ The Mailjet plugin allows you to reconfigure your mail function to use Mailjet S
 
 Mailjet's official plugin for Joomla will:
 
-* Reconfigure your mail function to use Mailjet's SMTP; 
-* Create an "Options" page to manage your email settings; 
-* Display a dashboard for your contact lists management;
-* Provide a signup widget, so your visitors can sign up to your Mailjet mailing lists.
+*Reconfigure your mail function to use Mailjet's SMTP;
+*Create an "Options" page to manage your email settings;
+*Provide contact management including a signup widget, so your joomla contacts synchronise automatically with your Mailjet mailing lists.
+*Allow you to use a drag-and-drop WYSIWYG newsletter builder directly within your interface or choose from any of our many pre-built templates
+*Allow you to look at your transactional and marketing email statistics (opens, clicks, bounces... ) in real time
 
 
 ### Secure & real-time SMTP relay for all your emails
@@ -75,7 +76,8 @@ Once your Mailjet plugin is installed, click on "Appearance" in the left-side me
 4. View detailed statistics about your account
 
 
-## Changelog
+Changelog
 
 = 3.0.0 =
-* The pluging is switched to v3 mailjet's users, and also the communication with mailjet is mainly executed with iframes
+
+The plugin has been updated to use contact, campaign and stats iFrames.  The update also includes compatibility with all Mailjet v3 accounts.  Any historical Mailjet v1 accounts will need to use the v1 version of the plug-in (https://www.mailjet.com/plugin/joomla.htm)
