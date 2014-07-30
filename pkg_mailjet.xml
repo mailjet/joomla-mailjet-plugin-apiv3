@@ -11,7 +11,7 @@
     <packager>Mailjet SAS</packager>
     <packagerurl>http://www.mailjet.com/</packagerurl>
     <copyright>Copyright (C) 2014 Mailjet SAS.</copyright>
-    <license>MIT License</license>
+    <license>GNU General Public License version 2 or later; see LICENSE</license>
     <description><![CDATA[
         <img style='float:left' src='https://fr.mailjet.com/images/theme/v1/logos/head_logo_small.png' border='0'>
         <b>Mailjet</b> puts your e-mail delivery and traceability at ease. Simply send, we take care of the rest.
