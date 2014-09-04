@@ -84,8 +84,9 @@ Once your Mailjet plugin is installed, click on "Extensions" in the top menu and
 Changelog
 
 = 3.0.2 =
-Add signup and use tracking on the Joomla plugin
-Fix IsActive parameter for token creation
+
+Add signup and use tracking on the Joomla plugin.
+Fix IsActive parameter for token creation.
 
 = 3.0.1 =
 
