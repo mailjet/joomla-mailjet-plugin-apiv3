@@ -4,7 +4,7 @@ Contributors: mailjet
 Tags: email, marketing, signup, newsletter, widget, smtp, mailjet
 Requires at least: 3.0.0
 Tested up to: 3.3.0
-Stable tag: 3.0.2
+Stable tag: 3.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,7 +44,7 @@ Our plugin simply overrides the Joomla mail settings, to use Mailjet's SMTP inst
 
 
 1. Log in as administrator in Joomla.
-2. Go to Extensions > Add and send Joomla-Mailjet-3.0.zip.
+2. Go to Extensions > Add and send Joomla-Mailjet-3.1.zip.
 3. Activate the Mailjet extension through the 'Extensions' menu in Joomla.
 
 
@@ -82,6 +82,10 @@ Once your Mailjet plugin is installed, click on "Extensions" in the top menu and
 
 
 Changelog
+
+= 3.1.0=
+
+Supports V1 and V3 Mailjet's users
 
 = 3.0.2 =
 
