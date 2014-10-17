@@ -4,7 +4,7 @@ Contributors: mailjet
 Tags: email, marketing, signup, newsletter, widget, smtp, mailjet
 Requires at least: 3.0.0
 Tested up to: 3.3.0
-Stable tag: 3.1.0
+Stable tag: 3.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,17 +83,17 @@ Once your Mailjet plugin is installed, click on "Extensions" in the top menu and
 
 Changelog
 
-= 3.1.0=
+= 3.1.1=
+* The generation of auth token for V1 user has to be executed via CURL, but not only with file_get_contents.
 
-Supports V1 and V3 Mailjet's users
+= 3.1.0=
+* Supports V1 and V3 Mailjet's users
 
 = 3.0.2 =
-
-Add signup and use tracking on the Joomla plugin.
-Fix IsActive parameter for token creation.
+* Add signup and use tracking on the Joomla plugin.
+* Fix IsActive parameter for token creation.
 
 = 3.0.1 =
-
-The plugin has been updated to use contact, campaign and stats iFrames. The update also includes compatibility with all Mailjet v3 accounts. 
-Any historical Mailjet v1 accounts will need to use the v1 version of the plug-in (https://www.mailjet.com/plugin/joomla.htm).
-Additional GET parameters are added for some of the URL's, sending additional information to Mailjet.
+* The plugin has been updated to use contact, campaign and stats iFrames. The update also includes compatibility with all Mailjet v3 accounts. 
+* Any historical Mailjet v1 accounts will need to use the v1 version of the plug-in (https://www.mailjet.com/plugin/joomla.htm).
+* Additional GET parameters are added for some of the URL's, sending additional information to Mailjet.
