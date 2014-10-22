@@ -4,7 +4,7 @@ Contributors: mailjet
 Tags: email, marketing, signup, newsletter, widget, smtp, mailjet
 Requires at least: 3.0.0
 Tested up to: 3.3.0
-Stable tag: 3.1.1
+Stable tag: 3.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -82,6 +82,9 @@ Once your Mailjet plugin is installed, click on "Extensions" in the top menu and
 
 
 Changelog
+
+= 3.1.2=
+* Bug fix related to the compatibility of the plugin for v1 and v3 users
 
 = 3.1.1=
 * The generation of auth token for V1 user has to be executed via CURL, but not only with file_get_contents.
