@@ -6,7 +6,7 @@
     <authorEmail>plugins@mailjet.com</authorEmail>
     <creationDate>June 2014</creationDate>
     <url>http://www.mailjet.com/</url>
-    <version>3.1.0</version>
+    <version>3.1.2</version>
     <packagename>mailjet</packagename>
     <packager>Mailjet SAS</packager>
     <packagerurl>http://www.mailjet.com/</packagerurl>
