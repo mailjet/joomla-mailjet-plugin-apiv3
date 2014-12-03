@@ -82,6 +82,9 @@ Once your Mailjet plugin is installed, click on "Extensions" in the top menu and
 
 
 Changelog
+= 3.1.5=
+* The "recipient email" on the Settings page is now saved correctly
+
 = 3.1.4=
 * In the Settings page the left sidebar is now displayed.
 
