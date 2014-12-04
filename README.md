@@ -4,7 +4,7 @@ Contributors: mailjet
 Tags: email, marketing, signup, newsletter, widget, smtp, mailjet
 Requires at least: 3.0.0
 Tested up to: 3.3.0
-Stable tag: 3.1.5
+Stable tag: 3.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -82,6 +82,9 @@ Once your Mailjet plugin is installed, click on "Extensions" in the top menu and
 
 
 Changelog
+= 3.1.6= 
+* When API key or Secret key are wrong, a corresponding error message is displayed
+
 = 3.1.5=
 * The "recipient email" on the Settings page is now saved correctly
 
