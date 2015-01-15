@@ -4,7 +4,7 @@ Contributors: mailjet
 Tags: email, marketing, signup, newsletter, widget, smtp, mailjet
 Requires at least: 3.0.0
 Tested up to: 3.3.0
-Stable tag: 3.1.3
+Stable tag: 3.1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -82,6 +82,21 @@ Once your Mailjet plugin is installed, click on "Extensions" in the top menu and
 
 
 Changelog
+= 3.1.8 =
+* The Spanish language now functions properly. When submitting api and secret keys the error messages (if any) are displayed in the corresponding language instead of English only.
+
+= 3.1.7= 
+* When we create a TOKEN we also send SentData containing plugin name
+
+= 3.1.6= 
+* When API key or Secret key are wrong, a corresponding error message is displayed
+
+= 3.1.5=
+* The "recipient email" on the Settings page is now saved correctly
+
+= 3.1.4=
+* In the Settings page the left sidebar is now displayed.
+
 = 3.1.3=
 * Modification of how to detect v1 and v3 users.
 
