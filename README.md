@@ -1,12 +1,12 @@
 # [API v3] Mailjet for Joomla
 
-Contributors: mailjet
-Tags: email, marketing, signup, newsletter, widget, smtp, mailjet
-Requires at least: 3.0.0
-Tested up to: 3.3.0
-Stable tag: 3.1.8
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Contributors: mailjet  
+Tags: email, marketing, signup, newsletter, widget, smtp, mailjet  
+Requires at least: 3.0.0  
+Tested up to: 3.3.0  
+Stable tag: 3.1.8  
+License: GPLv2 or later  
+License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
 The Mailjet plugin allows you to Send both transactional and marketing emails from your Joomla site by reconfiguring the mail settings to use Mailjet’s enhanced SMTP relay in conjunction with signup widgets that sync new user subscriptions directly to Mailjet as well as provide an easy drag-and-drop marketing newsletter tool to send marketing emails directly from with your site.
 ## Description
@@ -14,13 +14,13 @@ The Mailjet plugin allows you to Send both transactional and marketing emails fr
 
 Mailjet's official plugin for Joomla will:
 
-*Send both transactional and marketing emails from your Joomla site;
-*Reconfigure your mail settings to use Mailjet's SMTP for enhanced deliverability and tracking;
-*Create an "Options" page to manage your email settings;
-*To easily create contact lists and manage personalization variables;
-*To create and send marketing campaigns using a drag and drop Newsletter builder or selecting from our comprehensive template library;
-*Have the insight you need from a real-time dashboard showing opens, clicks, geographies, average time to click, user agents, etc;
-*Provide a signup widget that allows your visitors to sign up directly to your Mailjet mailing lists;
+* Send both transactional and marketing emails from your Joomla site;
+* Reconfigure your mail settings to use Mailjet's SMTP for enhanced deliverability and tracking;
+* Create an "Options" page to manage your email settings;
+* To easily create contact lists and manage personalization variables;
+* To create and send marketing campaigns using a drag and drop Newsletter builder or selecting from our comprehensive template library;
+* Have the insight you need from a real-time dashboard showing opens, clicks, geographies, average time to click, user agents, etc;
+* Provide a signup widget that allows your visitors to sign up directly to your Mailjet mailing lists;
 
 
 ### Secure & real-time SMTP relay for all your emails
@@ -81,7 +81,7 @@ Once your Mailjet plugin is installed, click on "Extensions" in the top menu and
 4. View detailed statistics about your account
 
 
-Changelog
+## Changelog
 = 3.1.8 =
 * The Spanish language now functions properly. When submitting api and secret keys the error messages (if any) are displayed in the corresponding language instead of English only.
 
