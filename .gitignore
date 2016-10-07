@@ -115,3 +115,5 @@ crashlytics.properties
 crashlytics-build.properties
 
 
+/nbproject/project.properties
+/nbproject/project.xml
