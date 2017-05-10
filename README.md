@@ -82,6 +82,9 @@ Once your Mailjet plugin is installed, click on "Extensions" in the top menu and
 
 
 ## Changelog
+= 3.1.10 =
+* When subscription email already exists, a corresponding error message is displayed instead of 404 error
+
 = 3.1.9 =
 * Removed preset account in config file
 
