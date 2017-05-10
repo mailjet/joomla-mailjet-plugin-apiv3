@@ -1,10 +1,10 @@
 # [API v3] Mailjet for Joomla
 
 Contributors: mailjet  
-Tags: email, marketing, signup, newsletter, widget, smtp, mailjet  
+Tags: email, marketing, signup, newsletter, widget, smtp, mailjet
 Requires at least: 3.0.0  
 Tested up to: 3.4.8
-Stable tag: 3.1.9
+Stable tag: 3.1.10
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
