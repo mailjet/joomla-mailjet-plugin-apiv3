@@ -312,15 +312,11 @@ class JMailjetConfig {
 	private function _log($response)
 	{
 		$log = realpath(__DIR__.'/../tmp/log');
-
 		touch($log);
-
-		$delimiter = str_repeat('=', 100);
-
+		$delimiter = str_repeat('=', 10);
 		$content = file_get_contents($log);
 
 		$prepend = '';
-
 		$prepend .= $delimiter;
 		$prepend .= PHP_EOL;
 		$prepend .= date('Y-m-d H:i:s');
@@ -330,11 +326,7 @@ class JMailjetConfig {
 		$prepend .= print_r($response, true);
 		$prepend .= PHP_EOL;
 
-
 		$content = $prepend.$content;
 		file_put_contents($log, $content);
 	}
-
 }
-
-?>

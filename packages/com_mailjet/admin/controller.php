@@ -61,9 +61,7 @@ class MailjetController extends JControllerLegacy
         require_once($mailjetConfig);
 
         $conf = new JMailjetConfig();
-
         $host = $conf->host;
-
         $prev = new JConfig();
         $prev = JArrayHelper::fromObject($prev);
 
@@ -112,7 +110,6 @@ class MailjetController extends JControllerLegacy
             } else {
                 $fields ['secure'] = 'none';
             }
-
             $fields ['port'] = $configs [$i] [1];
         } else {
             JError::raiseWarning(0, sPrintF(JText::_('COM_MAILJET_CONTACT_SUPPORT_ERROR'), $errno, $errstr));
@@ -155,7 +152,7 @@ class MailjetController extends JControllerLegacy
                 JError::raiseWarning(0, JText::_('Unable to write data file for Mailjet\'s settings.'));
             }
 
-            if ($fields ['enable']) {
+            if ($fields['enable']) {
                 $prev['mailer'] = 'smtp';
                 $prev['smtpauth'] = '1';
                 $prev['smtpuser'] = $fields['username'];
@@ -195,6 +192,7 @@ class MailjetController extends JControllerLegacy
             if (!$mjClient) {
                 JError::raiseWarning(0, JText::_('COM_MAILJET_API_KEY_ERROR'));
             }
+
             if ($fields['test']) {
                 $jversion = new JVersion();
                 if (version_compare($jversion->getShortVersion(), '2.5.6', 'lt')) {
@@ -219,5 +217,4 @@ class MailjetController extends JControllerLegacy
         }
         $this->display();
     }
-
 }

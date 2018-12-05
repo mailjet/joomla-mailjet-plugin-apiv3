@@ -39,7 +39,8 @@ class MailjetModelMailjet extends JModelLegacy {
         $this->mjClient = Mailjet_Api_Helper::getMailjetClient($this->params['username'], $this->params['password']);
     }
 	
-    function store(){
+    function store()
+    {
     	// Get the data which we'll save
         $email = filter_var($_POST['mailjet-email'], FILTER_SANITIZE_EMAIL);
         $list_id = filter_var($_POST['mailjet-list_id'], FILTER_SANITIZE_NUMBER_INT);
@@ -59,16 +60,14 @@ class MailjetModelMailjet extends JModelLegacy {
         return false;
     }
 
-    public function getAsRecord ()
+    public function getAsRecord()
     {
         //Below are some comments containing error messages to improve usability
         $credentials = sPrintF ('%s/components/%s/lib/db/data', JPATH_ADMINISTRATOR, 'com_mailjet');
 
-        if(file_exists($credentials)){
-            
+        if(file_exists($credentials)) {
             $pre_data = null;
             $content = trim(file_get_contents($credentials));
-            
             if ($content) {
                 $pre_data = json_decode($content);
             }

@@ -19,15 +19,15 @@ try {
     $auth = new Auth();
     $mailjetIframe = Mailjet_Api_Helper::getMailjetIframe($auth->getApiKey(), $auth->getApiSecret());
     $mailjetIframe->setInitialPage(\MailjetIframe\MailjetIframe::PAGE_CAMPAIGNS);
-?>
+    ?>
 
     <div id="j-sidebar-container" class="span2">
         <?php echo $this->sidebar; ?>
     </div>
     <div id="j-main-container" class="span10" style="width:100%; height: 1300px;">
-<?php echo $mailjetIframe->getHtml(); ?>
+    <?php echo $mailjetIframe->getHtml(); ?>
     </div>
-<?php
+    <?php
 } catch (\MailjetIframe\MailjetException $e) {
     ?>
     <div id="j-main-container" class="span10" style="width:100%; height: 1300px;">

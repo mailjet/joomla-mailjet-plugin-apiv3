@@ -29,9 +29,9 @@ try {
     </div>
     <?php
 } catch (\MailjetIframe\MailjetException $e) {
-?>
+    ?>
     <div id="j-main-container" class="span10" style="width:100%; height: 1300px;">
         <b>Error</b>
     </div>
-<?php
+    <?php
 }
