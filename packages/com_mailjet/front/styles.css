@@ -1,9 +1,19 @@
-.mailjet-error{
-    color: #D50000;
+.mailjet-error {
+    background: #f5797c;
+    padding: 5px;
+    border: 1px dashed #D50000;
+    -moz-border-radius: 6px;
+    border-radius: 6px; /* standards-compliant: (IE) */
+    color: #FFFFFF;
     font-weight: bold;
 }
 
-.mailjet-success{
-    color: #5F862F;
+.mailjet-success {
+    background: #8cc657;
+    padding: 5px;
+    border: 1px dashed #73AD21;
+    -moz-border-radius: 6px;
+    border-radius: 6px; /* standards-compliant: (IE) */
+    color: #FFFFFF;
     font-weight: bold;
 }
