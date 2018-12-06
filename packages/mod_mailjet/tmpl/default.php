@@ -17,6 +17,8 @@ if (version_compare($jversion->RELEASE, '2.5', '<=')) {
     JHtml::_('jquery.framework');
 }
 
+JFactory::getDocument()->addStyleSheet(JURI::base(). "components/com_mailjet/styles.css");
+
 if (version_compare($jversion->getShortVersion(), '2.5.6', 'lt')) {
   	JHTML::script('mod_mailjet.js', 'modules/mod_mailjet/includes/', false);
 } else {

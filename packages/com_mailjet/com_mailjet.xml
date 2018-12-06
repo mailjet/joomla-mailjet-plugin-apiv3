@@ -15,6 +15,7 @@
     <files folder="front">
         <filename>mailjet.php</filename>
         <filename>controller.php</filename>
+        <filename>styles.css</filename>
         <folder>models</folder>
         <folder>views</folder>
     </files>
