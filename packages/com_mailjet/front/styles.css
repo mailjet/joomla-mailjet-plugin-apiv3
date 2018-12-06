@@ -1,0 +1,9 @@
+.mailjet-error{
+    color: #D50000;
+    font-weight: bold;
+}
+
+.mailjet-success{
+    color: #5F862F;
+    font-weight: bold;
+}
