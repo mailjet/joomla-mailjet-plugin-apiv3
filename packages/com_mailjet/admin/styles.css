@@ -1,0 +1,21 @@
+.iframe{
+    border-bottom-color: rgb(238, 238, 238);
+    border-bottom-style: inset;
+    border-bottom-width: 2px;
+    border-image-outset: 0px;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-left-color: rgb(238, 238, 238);
+    border-left-style: inset;
+    border-left-width: 2px;
+    border-right-color: rgb(238, 238, 238);
+    border-right-style: inset;
+    border-right-width: 2px;
+    border-top-color: rgb(238, 238, 238);
+    border-top-style: inset;
+    border-top-width: 2px;
+    padding: 10px;
+    width: 1000px !important;
+}

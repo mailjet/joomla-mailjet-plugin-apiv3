@@ -1,0 +1,44 @@
+{
+    "name": "mailjet/joomla-mailjet-plugin-apiv3",
+    "type": "library",
+    "description": "Description",
+    "license": "GPL",
+    "keywords": ["joomla", "plugin", "mailjet"],
+    "authors": [
+        {
+            "name": "Mailjet",
+            "email": "plugins@mailjet.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:mailjet/mailjet-apiv3-php.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:mailjet/Mailjet-iframe-v3.git"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "composer/installers": "~1.0",
+        "mailjet/mailjet-apiv3-php": "dev-master",
+        "mailjet/Mailjet-iframe-v3": "dev-master"
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "scripts": {
+        "clearComposerCache": [
+            "rm -rf ~/.composer/cache*"
+        ],
+        "post-install-cmd": [
+            "@clearComposerCache"
+        ],
+        "post-update-cmd": [
+            "@clearComposerCache"
+        ]
+    }
+}

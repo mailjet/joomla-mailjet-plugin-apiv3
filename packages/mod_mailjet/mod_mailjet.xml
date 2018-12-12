@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site">
+	<name>Mailjet</name>
+    <author>Mailjet SAS</author>
+    <authorUrl>http://www.mailjet.com</authorUrl>
+    <authorEmail>plugins@mailjet.com</authorEmail>
+    <creationDate>June 2014</creationDate>
+    <url>http://www.mailjet.com/</url>
+    <version>3.1.10</version>
+    <copyright>Copyright (C) 2014 Mailjet SAS.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE</license>
+	<description>Mailjet Subscription Widget.</description>
+	<files>
+		<filename module="mod_mailjet">mod_mailjet.php</filename>
+		<filename>index.html</filename>
+		<folder>tmpl</folder>
+		<folder>includes</folder>
+		<folder>language</folder>
+		<folder>elements</folder>
+	</files>
+
+	<config>
+            <fields name="params" addfieldpath="/modules/mod_mailjet/elements">
+        	<fieldset name="basic">
+                        <field name="list"
+                                type="mailjetcombo"
+                                label="select list"
+                                description="select list"
+                                default="1">
+                                <option value="0">JNo</option>
+                                <option value="1">JYes</option>
+                        </field>
+                        <field name="button_text" type="text" label="Button text" description="Text of the submit button" default="Subscribe" />
+                        <field name="email_label" type="text" label="Email label" description="Label for the email input field" default="Email" />
+                        <field name="title" type="text" label="Widget title" description="Title of the widget" default="Subscription" />
+                        <field name="success" type="text" label="Success message" description="Subscription success message" default="You have been successfully subscribed" />
+                        <field name="duplicate" type="text" label="Duplicate message" description="Message to show when the contact has been subscribed previously" default="You have already been subscribed" />
+                        <field name="error" type="text" label="Error message" description="Message to show when the contact could not be subscribed" default="Sorry you could not be subscribed at this time" />
+                </fieldset>
+                <fieldset name="advanced">
+                    <field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+                </fieldset>
+            </fields>
+	</config>
+</extension>
