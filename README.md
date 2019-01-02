@@ -1,26 +1,27 @@
-# [API v3] Mailjet for Joomla
+![alt text](https://www.mailjet.com/images/email/transac/logo_header.png "Mailjet")
 
-Contributors: mailjet  
+# Mailjet for Joomla
+ 
 Tags: email, marketing, signup, newsletter, widget, smtp, mailjet
-Requires at least: 3.0.0  
-Tested up to: 3.4.8
+Requires at least: 3.0.0
+Tested up to: 3.9.1
 Stable tag: 3.2.0
-License: GPLv2 or later  
-License URI: http://www.gnu.org/licenses/gpl-2.0.html  
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The Mailjet plugin allows you to Send both transactional and marketing emails from your Joomla site by reconfiguring the mail settings to use Mailjet’s enhanced SMTP relay in conjunction with signup widgets that sync new user subscriptions directly to Mailjet as well as provide an easy drag-and-drop marketing newsletter tool to send marketing emails directly from with your site.
+The Mailjet plugin allows you to send both transactional and marketing emails from your Joomla site by reconfiguring the mail settings to use Mailjet’s enhanced SMTP relay in conjunction with signup widgets that sync new user subscriptions directly to Mailjet as well as provide an easy drag-and-drop marketing newsletter tool to send marketing emails directly from with your site.
+
 ## Description
-
 
 Mailjet's official plugin for Joomla will:
 
 * Send both transactional and marketing emails from your Joomla site;
 * Reconfigure your mail settings to use Mailjet's SMTP for enhanced deliverability and tracking;
 * Create an "Options" page to manage your email settings;
-* To easily create contact lists and manage personalization variables;
-* To create and send marketing campaigns using a drag and drop Newsletter builder or selecting from our comprehensive template library;
+* Allow you to easily create contact lists and manage personalization variables;
+* Allow you to create and send marketing campaigns using a drag and drop Newsletter builder or selecting from our comprehensive template library;
 * Have the insight you need from a real-time dashboard showing opens, clicks, geographies, average time to click, user agents, etc;
-* Provide a signup widget that allows your visitors to sign up directly to your Mailjet mailing lists;
+* Provide a signup widget that allows your visitors to sign up directly to your Mailjet mailing lists.
 
 
 ### Secure & real-time SMTP relay for all your emails
@@ -30,26 +31,23 @@ Our plugin simply overrides the Joomla mail settings, to use Mailjet's SMTP inst
 
 
 ### Sign up form & contact lists Management
--  Another great feature of this plugin is the sign up form Widget. It allows your site visitors to join your Mailjet lists. You can create contact lists directly from the plugin dashboard. The Widget will let you add forms to any post or any page.
+- Another great feature of this plugin is the sign up form Widget. It allows your site visitors to join your Mailjet lists. You can create contact lists directly from the plugin dashboard. The Widget will let you add forms to any post or any page.
 
-### Mailjet’s latest generation v3 iframes
--  Last but not least, the plugin features Mailjet’s latest v3 iframes to manage contacts, create drag-and-drop marketing campaigns and view in depth sending statistics directly from within the plug-in.
+### Mailjet’s latest generation iframes
+- Last but not least, the plugin features Mailjet’s latest v3 iframes to manage contacts, create drag-and-drop marketing campaigns and view in depth sending statistics directly from within the plug-in.
 
 
 ### Installing the Plugin
--  Enable Mailjet's Plugin like you would do for any other Joomla extension. Enter your Mailjet API and Secret Key credentials and refer to the FAQs for any other information. If you don't have a Mailjet account yet, signup now for free!
+- Enable Mailjet's Plugin like you would do for any other Joomla extension. Enter your Mailjet API and Secret Key credentials and refer to the FAQs for any other information. If you don't have a Mailjet account yet, signup now for free!
 
 
 ## Installation
-
-
 1. Log in as administrator in Joomla.
 2. Go to Extensions > Add and send Joomla-Mailjet-3.2.0.zip.
 3. Activate the Mailjet extension through the 'Extensions' menu in Joomla.
 
 
 ## Frequently Asked Questions
-
 
 ### What is Mailjet?
 [Mailjet](http://www.mailjet.com) is an all-in-one solution to send, track and deliver both marketing and transactional emails. Its Cloud-Based infrastructure is unique and highly scalable. A proprietary technology optimizes the sending and the deliverability of your messages.
@@ -85,7 +83,7 @@ Once your Mailjet plugin is installed, click on "Extensions" in the top menu and
 
 = 3.2.0 =
 * Fix subscription widget error wneh subscribing.
-* Allow more than 10 contact lists to be shown in dropdown for widget configuration
+* Allow more than 10 contact lists to be shown in the dropdown for widget configuration
 
 = 3.1.10 =
 * When subscription email already exists, a corresponding error message is displayed instead of 404 error
