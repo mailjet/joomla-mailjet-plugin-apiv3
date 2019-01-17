@@ -34,7 +34,8 @@ require_once (dirname(__FILE__).'/vendor/autoload.php');
       public static function getMailjetClient($username, $password)
       {
           $mjClient = new \Mailjet\Client($username, $password);
-          $mjClient->addRequestOption(CURLOPT_USERAGENT, 'joomla-3.0');
+          $mjClient->addRequestOption(CURLOPT_USERAGENT, 'joomla-3.2.1');
+          $mjClient->addRequestOption('headers', ['User-Agent' => 'joomla-3.2.1']);
           $mjClient->setSecureProtocol(false);
 
           return $mjClient;
