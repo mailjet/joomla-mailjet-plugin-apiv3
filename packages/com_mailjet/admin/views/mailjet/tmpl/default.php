@@ -45,8 +45,8 @@
                 <legend><?php echo JText::_ ('COM_MAILJET_GENERAL_SETTINGS'); ?></legend>
                 <p><?php echo JText::_ ('COM_MAILJET_MAILJET_SETTINGS_API_KEYS_HELP'); ?></p>
 
-                <label for="enable"><?php echo JText::_ ('COM_MAILJET_GENERAL_SETTINGS_ENABLED'); ?></label> <input type="checkbox" name="enable" id="enable" <?php if ($this->params ['enable']) echo 'checked="checked"'; ?> />
-                <label for="test"><?php echo JText::_ ('COM_MAILJET_GENERAL_SETTINGS_SEND_TEST'); ?></label> <input type="checkbox" name="test" id="test" <?php if ($this->params ['test']) echo 'checked="checked"'; ?> />
+                <input type="checkbox" name="enable" id="enable" style="float: left; margin-right: 5px;" <?php if ($this->params ['enable']) echo 'checked="checked"'; ?> /> <label for="enable"><?php echo JText::_ ('COM_MAILJET_GENERAL_SETTINGS_ENABLED'); ?></label> 
+                <input type="checkbox" name="test" id="test" style="float: left; margin-right: 5px;" <?php if ($this->params ['test']) echo 'checked="checked"'; ?> /> <label for="test"><?php echo JText::_ ('COM_MAILJET_GENERAL_SETTINGS_SEND_TEST'); ?></label> 
                 <label for="test_address"><?php echo JText::_ ('COM_MAILJET_GENERAL_SETTINGS_TEST_RECIPIENT'); ?></label> <input type="text" name="test_address" id="test_address" value="<?php echo $this->params ['test_address']; ?>" style="width:220px;" />
             </fieldset>
 
