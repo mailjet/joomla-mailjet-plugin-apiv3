@@ -22,14 +22,7 @@
 	<config>
             <fields name="params" addfieldpath="/modules/mod_mailjet/elements">
         	<fieldset name="basic">
-                        <field name="list"
-                                type="mailjetcombo"
-                                label="select list"
-                                description="select list"
-                                default="1">
-                                <option value="0">JNo</option>
-                                <option value="1">JYes</option>
-                        </field>
+                        <field name="list" type="mailjetcombo" label="Select list" description="Select Mailjet list to add your subscribers to" default="1" />
                         <field name="button_text" type="text" label="Button text" description="Text of the submit button" default="Subscribe" />
                         <field name="email_label" type="text" label="Email label" description="Label for the email input field" default="Email" />
                         <field name="title" type="text" label="Widget title" description="Title of the widget" default="Subscription" />
