@@ -13,12 +13,6 @@ if (!defined('DS')) {
 
 jimport('joomla.application.component.model');
 
-if (!function_exists('class_alias')) { // For php older then 5.3
-  function class_alias($orig, $alias) {
-    eval('abstract class ' . $alias . ' extends ' . $orig . ' {}');
-  }
-}
-
 if (!class_exists('JModelLegacy')) {
   class_alias('JModel','JModelLegacy');
 }

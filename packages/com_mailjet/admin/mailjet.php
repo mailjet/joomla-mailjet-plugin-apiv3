@@ -34,7 +34,8 @@ jimport('joomla.application.component.controller');
 $controller = JControllerLegacy::getInstance('Mailjet');
 
 // Perform the Request task
-$controller->execute(JRequest::getCmd('task'));
+$input = \Joomla\CMS\Factory::getApplication()->input;
+$controller->execute($input->getCmd('task'));
 
 // Redirect if set by the controller
 $controller->redirect();

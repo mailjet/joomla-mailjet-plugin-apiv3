@@ -1,48 +1,48 @@
 <?php
 /**
- * @author Mailjet SAS
+ * @author     Mailjet SAS
  *
  * @copyright  Copyright (C) 2014 Mailjet SAS.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
+
 // No direct access to this file
+use Joomla\CMS\Factory;
+use Joomla\CMS\Session\Session;
+use Joomla\Utilities\ArrayHelper;
+
 defined('_JEXEC') or die('Restricted access');
 ini_set('display_errors', 0);
 
 // import Joomla controller library
 jimport('joomla.application.component.controller');
 
-if (!function_exists('class_alias')) { // For php older then 5.3
-    function class_alias($orig, $alias)
-    {
-        eval('abstract class ' . $alias . ' extends ' . $orig . ' {}');
-    }
-}
-
 if (!class_exists('JControllerLegacy')) {
     class_alias('JController', 'JControllerLegacy');
 }
 
-/**
- * General Controller of HelloWorld component
- */
 class MailjetController extends JControllerLegacy
 {
     /**
-     * display task
+     * @param   bool  $cachable
+     * @param   bool  $urlparams
      *
      * @return void
+     * @throws Exception
+     * @since 4.0
      */
-    function display($cachable = false, $urlparams = false)
+    function display($cachable = false, $urlparams = false): void
     {
         require_once JPATH_COMPONENT . '/helpers/mailjet.php';
+        $jInput = Factory::getApplication()->input;
 
         // set default view if not set
-        JRequest::setVar('view', JRequest::getCmd('view', 'mailjet'));
+        $jInput->set('view', $jInput->getCmd('view', 'mailjet'));
+        /*JRequest::setVar('view', JRequest::getCmd('view', 'mailjet'));*/
 
-        $view = $this->input->get('view', 'messages');
+        $view   = $this->input->get('view', 'messages');
         $layout = $this->input->get('layout', 'default');
-        $id = $this->input->getInt('id');
+        $id     = $this->input->getInt('id');
 
         MailjetHelper::addSubmenu($this->input->get('view', 'mailjet'));
         // call parent behavior
@@ -52,52 +52,52 @@ class MailjetController extends JControllerLegacy
 
     function save()
     {
-        JRequest::checkToken() or jexit('Invalid Token');
+        Session::checkToken() or jexit('Invalid Token');
 
-        $error = FALSE;
+        $error         = false;
         $mailjetConfig = sPrintF('%s/components/%s/config.php', JPATH_ADMINISTRATOR, 'com_mailjet');
-        $fileConfig = JPATH_ROOT . '/configuration.php';
+        $fileConfig    = JPATH_ROOT . '/configuration.php';
 
         require_once($mailjetConfig);
 
         $conf = new JMailjetConfig();
         $host = $conf->host;
         $prev = new JConfig();
-        $prev = JArrayHelper::fromObject($prev);
+        $prev = ArrayHelper::fromObject($prev);
 
-        $fields['bak_mailer'] = $prev['mailer'];
-        $fields['bak_smtpauth'] = $prev['smtpauth'];
-        $fields['bak_smtpuser'] = $prev['smtpuser'];
-        $fields['bak_smtppass'] = $prev['smtppass'];
-        $fields['bak_smtphost'] = $prev['smtphost'];
+        $fields['bak_mailer']     = $prev['mailer'];
+        $fields['bak_smtpauth']   = $prev['smtpauth'];
+        $fields['bak_smtpuser']   = $prev['smtpuser'];
+        $fields['bak_smtppass']   = $prev['smtppass'];
+        $fields['bak_smtphost']   = $prev['smtphost'];
         $fields['bak_smtpsecure'] = $prev['smtpsecure'];
-        $fields['bak_smtpport'] = $prev['smtpport'];
+        $fields['bak_smtpport']   = $prev['smtpport'];
 
-        $data = JRequest::get('post');
+        $data = Factory::getApplication()->input->post;
 
-        $fields['enable'] = isSet ($data['enable']);
-        $fields['test'] = isSet ($data['test']);
+        $fields['enable']       = isset ($data['enable']);
+        $fields['test']         = isset ($data['test']);
         $fields['test_address'] = $data['test_address'];
-        $fields['username'] = $data['username'];
-        $fields['password'] = $data['password'];
-        $fields['host'] = $host;
+        $fields['username']     = $data['username'];
+        $fields['password']     = $data['password'];
+        $fields['host']         = $host;
 
-        $configs = array(array('ssl://', 465),
-            array('tls://', 587),
-            array('', 587),
-            array('', 588),
-            array('tls://', 25),
-            array('', 25),
-            array('', 80)
-        );
+        $configs = [['ssl://', 465],
+            ['tls://', 587],
+            ['', 587],
+            ['', 588],
+            ['tls://', 25],
+            ['', 25],
+            ['', 80]
+        ];
 
-        $connected = FALSE;
+        $connected = false;
 
         for ($i = 0; $i < count($configs); ++$i) {
             $soc = @fSockOpen($configs[$i][0] . $host, $configs[$i][1], $errno, $errstr, 5);
             if ($soc) {
                 fClose($soc);
-                $connected = TRUE;
+                $connected = true;
                 break;
             }
         }
@@ -105,13 +105,16 @@ class MailjetController extends JControllerLegacy
         if ($connected) {
             if ('ssl://' == $configs [$i] [0]) {
                 $fields ['secure'] = 'ssl';
-            } elseif ('tls://' == $configs [$i] [0]) {
+            }
+            elseif ('tls://' == $configs [$i] [0]) {
                 $fields ['secure'] = 'tls';
-            } else {
+            }
+            else {
                 $fields ['secure'] = 'none';
             }
             $fields ['port'] = $configs [$i] [1];
-        } else {
+        }
+        else {
             JError::raiseWarning(0, sPrintF(JText::_('COM_MAILJET_CONTACT_SUPPORT_ERROR'), $errno, $errstr));
         }
 
@@ -119,12 +122,12 @@ class MailjetController extends JControllerLegacy
 
         if ($fields ['test'] && (empty ($fields ['test_address']) || !JMailHelper::isEmailAddress($fields ['test_address']))) {
             JError::raiseWarning(0, JText::_('COM_MAILJET_RECIPIENT_INVALID', $fields ['test_address']));
-            $error = TRUE;
+            $error = true;
         }
 
         if (empty ($fields ['username']) || empty ($fields ['password'])) {
             JError::raiseWarning(0, JText::_('COM_MAILJET_SETTINGS_MANDATORY'));
-            $error = TRUE;
+            $error = true;
         }
 
         if (!$error) {
@@ -141,11 +144,11 @@ class MailjetController extends JControllerLegacy
             }
 
             $mailjetData = sPrintF('%s/components/%s/lib/db/data', JPATH_ADMINISTRATOR, 'com_mailjet');
-            $JSONString = json_encode(array(
-                'apiKey' => $fields['username'],
-                'apiSecret' => $fields['password'],
+            $JSONString  = json_encode(array(
+                'apiKey'       => $fields['username'],
+                'apiSecret'    => $fields['password'],
                 'test_address' => $fields['test_address'],
-                'enable' => $fields['enable'],
+                'enable'       => $fields['enable'],
             ));
 
             if (!JFile::write($mailjetData, $JSONString)) {
@@ -153,21 +156,22 @@ class MailjetController extends JControllerLegacy
             }
 
             if ($fields['enable']) {
-                $prev['mailer'] = 'smtp';
-                $prev['smtpauth'] = '1';
-                $prev['smtpuser'] = $fields['username'];
-                $prev['smtppass'] = $fields['password'];
-                $prev['smtphost'] = $fields['host'];
+                $prev['mailer']     = 'smtp';
+                $prev['smtpauth']   = '1';
+                $prev['smtpuser']   = $fields['username'];
+                $prev['smtppass']   = $fields['password'];
+                $prev['smtphost']   = $fields['host'];
                 $prev['smtpsecure'] = $fields['secure'];
-                $prev['smtpport'] = $fields['port'];
-            } else {
-                $prev['mailer'] = $fields['bak_mailer'];
-                $prev['smtpauth'] = $fields['bak_smtpauth'];
-                $prev['smtpuser'] = $fields['bak_smtpuser'];
-                $prev['smtppass'] = $fields['bak_smtppass'];
-                $prev['smtphost'] = $fields['bak_smtphost'];
+                $prev['smtpport']   = $fields['port'];
+            }
+            else {
+                $prev['mailer']     = $fields['bak_mailer'];
+                $prev['smtpauth']   = $fields['bak_smtpauth'];
+                $prev['smtpuser']   = $fields['bak_smtpuser'];
+                $prev['smtppass']   = $fields['bak_smtppass'];
+                $prev['smtphost']   = $fields['bak_smtphost'];
                 $prev['smtpsecure'] = $fields['bak_smtpsecure'];
-                $prev['smtpport'] = $fields['bak_smtpport'];
+                $prev['smtpport']   = $fields['bak_smtpport'];
             }
 
             $config = new JRegistry ('config');
@@ -198,16 +202,17 @@ class MailjetController extends JControllerLegacy
                 if (version_compare($jversion->getShortVersion(), '2.5.6', 'lt')) {
                     if (JUtility::sendMail($prev['mailfrom'], $prev['fromname'], $fields['test_address'],
                             JText::_('Your test mail from Mailjet and Joomla'),
-                            JText::_('COM_MAILJET_CONFIG_OK')) !== TRUE
+                            JText::_('COM_MAILJET_CONFIG_OK')) !== true
                     ) {
                         JError::raiseNotice(500, JText:: _('COM_MAILJET_TEST_EMAIL_NOT_SENT'));
                     }
-                } else {
+                }
+                else {
                     $mail = JMail::getInstance();
                     $mail->useSMTP(true, $prev['smtphost'], $prev['smtpuser'], $prev['smtppass'], 'tls', 587);
                     if ($mail->sendMail($prev['mailfrom'], $prev['fromname'], $fields['test_address'],
                             JText::_('Your test mail from Mailjet and Joomla'),
-                            JText::_('COM_MAILJET_CONFIG_OK')) !== TRUE
+                            JText::_('COM_MAILJET_CONFIG_OK')) !== true
                     ) {
                         JError::raiseNotice(500, JText:: _('COM_MAILJET_TEST_EMAIL_NOT_SENT'));
                     }
