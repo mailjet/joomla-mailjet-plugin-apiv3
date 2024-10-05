@@ -16,38 +16,38 @@ defined('_JEXEC') or die;
  */
 class MailjetHelper
 {
-	/**
-	 * Configure the Linkbar.
-	 *
-	 * @param   string	The name of the active view.
-	 *
-	 * @return  void
-	 * @since   1.6
-	 */
-	public static function addSubmenu($vName)
-	{
-		JHtmlSidebar::addEntry(
-			JText::_('COM_MAILJET_SETTINGS'),
-			'index.php?option=com_mailjet&view=mailjet',
-			$vName == 'mailjet'
-		);
+    /**
+     * Configure the Linkbar.
+     *
+     * @param   string    The name of the active view.
+     *
+     * @return  void
+     * @since   1.6
+     */
+    public static function addSubmenu($vName)
+    {
+        JHtmlSidebar::addEntry(
+            \Joomla\CMS\Language\Text::_('COM_MAILJET_SETTINGS'),
+            'index.php?option=com_mailjet&view=mailjet',
+            $vName == 'mailjet'
+        );
 
-		JHtmlSidebar::addEntry(
-			JText::_('COM_MAILJET_CONTACTS'),
-			'index.php?option=com_mailjet&view=contacts',
-			$vName == 'contacts'
-		);
+        JHtmlSidebar::addEntry(
+            \Joomla\CMS\Language\Text::_('COM_MAILJET_CONTACTS'),
+            'index.php?option=com_mailjet&view=contacts',
+            $vName == 'contacts'
+        );
 
-		JHtmlSidebar::addEntry(
-			JText::_('COM_MAILJET_CAMPAIGNS'),
-			'index.php?option=com_mailjet&view=campaigns',
-			$vName == 'campaigns'
-		);
+        JHtmlSidebar::addEntry(
+            \Joomla\CMS\Language\Text::_('COM_MAILJET_CAMPAIGNS'),
+            'index.php?option=com_mailjet&view=campaigns',
+            $vName == 'campaigns'
+        );
 
-		JHtmlSidebar::addEntry(
-			JText::_('COM_MAILJET_STATS'),
-			'index.php?option=com_mailjet&view=statistics',
-			$vName == 'statistics'
-		);
-	}
+        JHtmlSidebar::addEntry(
+            \Joomla\CMS\Language\Text::_('COM_MAILJET_STATS'),
+            'index.php?option=com_mailjet&view=statistics',
+            $vName == 'statistics'
+        );
+    }
 }

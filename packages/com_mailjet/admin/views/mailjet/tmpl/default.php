@@ -12,15 +12,6 @@
 </div>
 <div id="j-main-container" class="span10 iframe">
     <form action="<?php echo JRoute::_('index.php?option=com_mailjet&layout=edit') ?>" method="post" id="adminForm" name="adminForm">
-        <div class="social" style="width:25%;float:right;border: 1px #CCC solid; border-radius: 6px; padding:8px">
-            <h3><?php echo JText::_ ('COM_MAILJET_PLUGIN_INSTRUCTIONS_SHARE'); ?></h3>
-            <div style="margin-bottom:10px">
-                <?php echo JText::_ ('COM_MAILJET_PLUGIN_INSTRUCTIONS_FACEBOOK_LINK'); ?>
-            </div>
-            <div>
-                <?php echo JText::_ ('COM_MAILJET_PLUGIN_INSTRUCTIONS_TWITTER_LINK'); ?>
-            </div>
-        </div>
         <div id="editcell"style="width:70%">
             <fieldset class="adminform">
                 <legend><?php echo JText::_ ('COM_MAILJET_PLUGIN_INSTRUCTIONS_TITLE'); ?></legend>
@@ -51,10 +42,9 @@
             </fieldset>
 
             <fieldset class="adminform">
-                <legend><?php echo JText::_ ('COM_MAILJET_MAILJET_SETTINGS'); ?></legend>
-
-                <label for="username"><?php echo JText::_ ('COM_MAILJET_MAILJET_SETTINGS_API_KEY'); ?></label> <input type="text" name="username" id="username" value="<?php echo $this->params ['username']; ?>" style="width:220px;" />
-                <label for="password"><?php echo JText::_ ('COM_MAILJET_MAILJET_SETTINGS_SECRET_KEY'); ?></label> <input type="text" name="password" id="password" value="<?php echo $this->params ['password']; ?>" style="width:220px;" />
+                <legend><?php echo \Joomla\CMS\Language\Text::_ ('COM_MAILJET_MAILJET_SETTINGS'); ?></legend>
+                <label for="username"><?php echo \Joomla\CMS\Language\Text::_ ('COM_MAILJET_MAILJET_SETTINGS_API_KEY'); ?></label> <input type="text" name="username" id="username" value="<?php echo $this->params['username']; ?>" style="width:220px;" />
+                <label for="password"><?php echo \Joomla\CMS\Language\Text::_ ('COM_MAILJET_MAILJET_SETTINGS_SECRET_KEY'); ?></label> <input type="text" name="password" id="password" value="<?php echo $this->params['password']; ?>" style="width:220px;" />
             </fieldset>
         </div>
         <?php echo JHTML::_( 'form.token' ); ?>

@@ -25,9 +25,9 @@ class MailjetViewMailjet extends JViewLegacy
      * @throws Exception
      * @since 4.0
      */
-    function display($tpl = null): void
+    public function display($tpl = null): void
     {
-        JToolBarHelper::title(JText::_('COM_MAILJET_MAILJET_SETTINGS'), 'logo.png');
+        JToolBarHelper::title(\Joomla\CMS\Language\Text::_('COM_MAILJET_MAILJET_SETTINGS'), 'logo.png');
         JToolBarHelper::save('save');
 
         $model = $this->getModel('mailjet');
@@ -37,8 +37,8 @@ class MailjetViewMailjet extends JViewLegacy
         } else {
             $params = $model->getAsRecord();
         }
-        $this->assignRef('params', $params);
-        JFactory::getDocument()->addStyleSheet(\Joomla\Uri\Uri::base() . "components/com_mailjet/styles.css");
+        $this->params = $params;
+        \Joomla\CMS\Factory::getApplication()->getDocument()->addStyleSheet(\Joomla\CMS\Uri\Uri::root() . "components/com_mailjet/styles.css");
         $this->sidebar = JHtmlSidebar::render();
         parent::display($tpl);
     }

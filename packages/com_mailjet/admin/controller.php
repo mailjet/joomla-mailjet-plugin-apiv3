@@ -31,26 +31,22 @@ class MailjetController extends JControllerLegacy
      * @throws Exception
      * @since 4.0
      */
-    function display($cachable = false, $urlparams = false): void
+    public function display($cachable = false, $urlparams = false): void
     {
         require_once JPATH_COMPONENT . '/helpers/mailjet.php';
         $jInput = Factory::getApplication()->input;
-
-        // set default view if not set
         $jInput->set('view', $jInput->getCmd('view', 'mailjet'));
-        /*JRequest::setVar('view', JRequest::getCmd('view', 'mailjet'));*/
-
-        $view   = $this->input->get('view', 'messages');
-        $layout = $this->input->get('layout', 'default');
-        $id     = $this->input->getInt('id');
 
         MailjetHelper::addSubmenu($this->input->get('view', 'mailjet'));
-        // call parent behavior
         parent::display($cachable);
     }
 
 
-    function save()
+    /**
+     * @throws Exception
+     * @since 4.0
+     */
+    public function save(): void
     {
         Session::checkToken() or jexit('Invalid Token');
 
@@ -73,10 +69,10 @@ class MailjetController extends JControllerLegacy
         $fields['bak_smtpsecure'] = $prev['smtpsecure'];
         $fields['bak_smtpport']   = $prev['smtpport'];
 
-        $data = Factory::getApplication()->input->post;
+        $data = Factory::getApplication()->input->post->getArray();
 
-        $fields['enable']       = isset ($data['enable']);
-        $fields['test']         = isset ($data['test']);
+        $fields['enable']       = isset($data['enable']) && $data['enable'] === 'on';
+        $fields['test']         = isset($data['test']);
         $fields['test_address'] = $data['test_address'];
         $fields['username']     = $data['username'];
         $fields['password']     = $data['password'];
@@ -115,18 +111,34 @@ class MailjetController extends JControllerLegacy
             $fields ['port'] = $configs [$i] [1];
         }
         else {
-            JError::raiseWarning(0, sPrintF(JText::_('COM_MAILJET_CONTACT_SUPPORT_ERROR'), $errno, $errstr));
+            Factory::getApplication()->enqueueMessage(
+                json_encode([
+                    'message' => \Joomla\CMS\Language\Text::_('COM_MAILJET_CONTACT_SUPPORT_ERROR'),
+                    'error'   => $errno,
+                    'str'     => $errstr
+                ]),
+                \Joomla\CMS\Application\CMSApplication::MSG_WARNING
+            );
         }
 
         jimport('joomla.mail.helper');
 
         if ($fields ['test'] && (empty ($fields ['test_address']) || !JMailHelper::isEmailAddress($fields ['test_address']))) {
-            JError::raiseWarning(0, JText::_('COM_MAILJET_RECIPIENT_INVALID', $fields ['test_address']));
+            Factory::getApplication()->enqueueMessage(
+                json_encode([
+                    'message' => \Joomla\CMS\Language\Text::_('COM_MAILJET_RECIPIENT_INVALID'),
+                    'error'   => $fields['test_address'],
+                ]),
+                \Joomla\CMS\Application\CMSApplication::MSG_WARNING
+            );
             $error = true;
         }
 
-        if (empty ($fields ['username']) || empty ($fields ['password'])) {
-            JError::raiseWarning(0, JText::_('COM_MAILJET_SETTINGS_MANDATORY'));
+        if (empty($fields ['username']) || empty($fields ['password'])) {
+            Factory::getApplication()->enqueueMessage(
+                \Joomla\CMS\Language\Text::_('COM_MAILJET_SETTINGS_MANDATORY'),
+                \Joomla\CMS\Application\CMSApplication::MSG_WARNING
+            );
             $error = true;
         }
 
@@ -134,13 +146,16 @@ class MailjetController extends JControllerLegacy
             jimport('joomla.filesystem.path');
             jimport('joomla.filesystem.file');
 
-            $config = new JRegistry ('config');
+            $config = new \Joomla\Registry\Registry('config');
             $config->loadArray($fields);
 
             $configString = $config->toString('PHP', array('class' => 'JMailjetConfig', 'closingtag' => false));
 
-            if (!JFile::write($mailjetConfig, $configString)) {
-                JError::raiseWarning(0, JText::_('COM_MAILJET_CONFIG_FILE_UNWRITABLE'));
+            if (!\Joomla\Filesystem\File::write($mailjetConfig, $configString)) {
+                Factory::getApplication()->enqueueMessage(
+                    \Joomla\CMS\Language\Text::_('COM_MAILJET_CONFIG_FILE_UNWRITABLE'),
+                    \Joomla\CMS\Application\CMSApplication::MSG_WARNING
+                );
             }
 
             $mailjetData = sPrintF('%s/components/%s/lib/db/data', JPATH_ADMINISTRATOR, 'com_mailjet');
@@ -151,8 +166,11 @@ class MailjetController extends JControllerLegacy
                 'enable'       => $fields['enable'],
             ));
 
-            if (!JFile::write($mailjetData, $JSONString)) {
-                JError::raiseWarning(0, JText::_('Unable to write data file for Mailjet\'s settings.'));
+            if (!\Joomla\Filesystem\File::write($mailjetData, $JSONString)) {
+                Factory::getApplication()->enqueueMessage(
+                    \Joomla\CMS\Language\Text::_('Unable to write data file for Mailjet\'s settings.'),
+                    \Joomla\CMS\Application\CMSApplication::MSG_WARNING
+                );
             }
 
             if ($fields['enable']) {
@@ -174,51 +192,69 @@ class MailjetController extends JControllerLegacy
                 $prev['smtpport']   = $fields['bak_smtpport'];
             }
 
-            $config = new JRegistry ('config');
+            $config = new \Joomla\Registry\Registry('config');
             $config->loadArray($prev);
 
-            if (!JPath::setPermissions($fileConfig, '0644')) {
-                JError::raiseNotice('SOME_ERROR_CODE', JText::_('COM_CONFIG_ERROR_CONFIGURATION_PHP_NOTWRITABLE'));
+            if (!\Joomla\Filesystem\Path::setPermissions($fileConfig, '0644')) {
+                Factory::getApplication()->enqueueMessage(
+                    \Joomla\CMS\Language\Text::_('COM_CONFIG_ERROR_CONFIGURATION_PHP_NOTWRITABLE'),
+                    \Joomla\CMS\Application\CMSApplication::MSG_NOTICE
+                );
             }
 
-            $configString = $config->toString('PHP', array('class' => 'JConfig', 'closingtag' => false));
-            if (!JFile::write($fileConfig, $configString)) {
-                JError::raiseWarning(0, JText::_('COM_CONFIG_ERROR_WRITE_FAILED'));
+            $configString = $config->toString('PHP', ['class' => 'JConfig', 'closingtag' => false]);
+            if (!\Joomla\Filesystem\File::write($fileConfig, $configString)) {
+                Factory::getApplication()->enqueueMessage(
+                    \Joomla\CMS\Language\Text::_('COM_CONFIG_ERROR_WRITE_FAILED'),
+                    \Joomla\CMS\Application\CMSApplication::MSG_WARNING
+                );
             }
 
-            if (!JPath::setPermissions($fileConfig, '0444')) {
-                JError::raiseNotice('SOME_ERROR_CODE', JText::_('COM_CONFIG_ERROR_CONFIGURATION_PHP_NOTUNWRITABLE'));
+            if (!\Joomla\Filesystem\Path::setPermissions($fileConfig, '0444')) {
+                Factory::getApplication()->enqueueMessage(
+                    \Joomla\CMS\Language\Text::_('COM_CONFIG_ERROR_CONFIGURATION_PHP_NOTUNWRITABLE'),
+                    \Joomla\CMS\Application\CMSApplication::MSG_NOTICE
+                );
             }
 
             // The new approach of making Mailjet API calls
             require_once(dirname(__FILE__) . '/lib/lib/mailjet-api-helper.php');
             $mjClient = Mailjet_Api_Helper::getMailjetClient($fields['username'], $fields['password']);
             if (!$mjClient) {
-                JError::raiseWarning(0, JText::_('COM_MAILJET_API_KEY_ERROR'));
+                Factory::getApplication()->enqueueMessage(
+                    \Joomla\CMS\Language\Text::_('COM_MAILJET_API_KEY_ERROR'),
+                    \Joomla\CMS\Application\CMSApplication::MSG_WARNING
+                );
             }
 
             if ($fields['test']) {
-                $jversion = new JVersion();
+                $jversion = new \Joomla\CMS\Version();
                 if (version_compare($jversion->getShortVersion(), '2.5.6', 'lt')) {
                     if (JUtility::sendMail($prev['mailfrom'], $prev['fromname'], $fields['test_address'],
-                            JText::_('Your test mail from Mailjet and Joomla'),
-                            JText::_('COM_MAILJET_CONFIG_OK')) !== true
+                            \Joomla\CMS\Language\Text::_('Your test mail from Mailjet and Joomla'),
+                            \Joomla\CMS\Language\Text::_('COM_MAILJET_CONFIG_OK')) !== true
                     ) {
-                        JError::raiseNotice(500, JText:: _('COM_MAILJET_TEST_EMAIL_NOT_SENT'));
+                        Factory::getApplication()->enqueueMessage(
+                            \Joomla\CMS\Language\Text::_('COM_MAILJET_TEST_EMAIL_NOT_SENT'),
+                            \Joomla\CMS\Application\CMSApplication::MSG_NOTICE
+                        );
                     }
                 }
                 else {
-                    $mail = JMail::getInstance();
+                    $mail = Factory::getContainer()->get(\Joomla\CMS\Mail\MailerFactoryInterface::class)->createMailer();
                     $mail->useSMTP(true, $prev['smtphost'], $prev['smtpuser'], $prev['smtppass'], 'tls', 587);
                     if ($mail->sendMail($prev['mailfrom'], $prev['fromname'], $fields['test_address'],
-                            JText::_('Your test mail from Mailjet and Joomla'),
-                            JText::_('COM_MAILJET_CONFIG_OK')) !== true
+                            \Joomla\CMS\Language\Text::_('Your test mail from Mailjet and Joomla'),
+                            \Joomla\CMS\Language\Text::_('COM_MAILJET_CONFIG_OK')) !== true
                     ) {
-                        JError::raiseNotice(500, JText:: _('COM_MAILJET_TEST_EMAIL_NOT_SENT'));
+                        Factory::getApplication()->enqueueMessage(
+                            \Joomla\CMS\Language\Text::_('COM_MAILJET_TEST_EMAIL_NOT_SENT'),
+                            \Joomla\CMS\Application\CMSApplication::MSG_NOTICE
+                        );
                     }
                 }
             }
-            JFactory::getApplication()->enqueueMessage(JText:: _('COM_MAILJET_SETTINGS_SAVED'));
+            Factory::getApplication()->enqueueMessage(\Joomla\CMS\Language\Text:: _('COM_MAILJET_SETTINGS_SAVED'));
         }
         $this->display();
     }
