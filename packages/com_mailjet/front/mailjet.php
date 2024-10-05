@@ -10,17 +10,17 @@ error_reporting(E_ALL & ~E_NOTICE);
 ini_set('display_errors', 1);
 defined('_JEXEC') or die('Restricted access');
 
-if (!defined('DS')) {
-    define('DS', DIRECTORY_SEPARATOR);
+if(!defined('DS')){
+  define('DS',DIRECTORY_SEPARATOR);
 }
 
 // Require the base controller
-require_once(JPATH_COMPONENT . DS . 'controller.php');
+require_once (JPATH_COMPONENT . DS . 'controller.php');
 
 $jInput = \Joomla\CMS\Factory::getApplication()->input;
 // Require specific controller if requested
 if ($controller = $jInput->get('controller')) {
-    require_once(JPATH_COMPONENT . DS . 'controllers' . DS . $controller . '.php');
+    require_once (JPATH_COMPONENT . DS . 'controllers' . DS . $controller . '.php');
 }
 
 // Create the controller

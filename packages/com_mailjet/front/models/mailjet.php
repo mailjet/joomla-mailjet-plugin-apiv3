@@ -34,7 +34,11 @@ class MailjetModelMailjet extends JModelLegacy
         $this->mjClient = Mailjet_Api_Helper::getMailjetClient($this->params['username'], $this->params['password']);
     }
 
-    public function store()
+    /**
+     * @since 4.0
+     * @return bool
+     */
+    public function store(): bool
     {
         // Get the data which we'll save
         $email   = filter_var($_POST['mailjet-email'], FILTER_SANITIZE_EMAIL);
@@ -62,6 +66,10 @@ class MailjetModelMailjet extends JModelLegacy
         return false;
     }
 
+    /**
+     * @since 4.0
+     * @return array|void
+     */
     public function getAsRecord()
     {
         //Below are some comments containing error messages to improve usability
@@ -74,17 +82,10 @@ class MailjetModelMailjet extends JModelLegacy
                 $pre_data = json_decode($content);
             }
 
-            /*if(!$pre_data->apiKey || !$pre_data->apiSecret){
-                JError::raiseWarning( 100, JText::_("COM_MAILJET_INCOMPLETE_INFO") );
-            }*/
-
             $data ['username'] = $pre_data->apiKey;
             $data ['password'] = $pre_data->apiSecret;
 
             return $data;
         }
-        /*else{
-            JError::raiseWarning( 100, JText::_("COM_MAILJET_NO_DATAFILE") );
-        }*/
     }
 }

@@ -15,20 +15,18 @@
         {
             "type": "vcs",
             "url": "git@github.com:mailjet/mailjet-apiv3-php.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@github.com:mailjet/Mailjet-iframe-v3.git"
         }
     ],
     "require": {
-        "php": ">=5.4",
+        "php": ">=7.4",
         "composer/installers": "~1.0",
-        "mailjet/mailjet-apiv3-php": "dev-master",
-        "mailjet/Mailjet-iframe-v3": "dev-master"
+        "mailjet/mailjet-apiv3-php": "^1.6"
     },
     "config": {
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "composer/installers": true
+        }
     },
     "scripts": {
         "clearComposerCache": [

@@ -4,8 +4,8 @@
  
 Tags: email, marketing, signup, newsletter, widget, smtp, mailjet
 Requires at least: 3.0.0
-Tested up to: 3.9.1
-Stable tag: 3.2.1
+Tested up to: 4.4.8
+Stable tag: 4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +80,9 @@ Once your Mailjet plugin is installed, click on "Extensions" in the top menu and
 
 
 ## Changelog
+
+= 4.0 =
+* Make plugin compatible with Joomla 4. 
 
 = 3.2.1 =
 * Add proper way to set user agent to all Mailjet API calls

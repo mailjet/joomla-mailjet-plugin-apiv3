@@ -38,15 +38,15 @@ $lang->load($extension, $base_dir, $language_tag, $reload);
 class MailjetViewStatistics extends JViewLegacy
 {
     /**
-     * HelloWorlds view display method
+     * @since 4.0
      * @return void
      */
-    function display($tpl = null)
+    public function display($tpl = null)
     {
-        JToolBarHelper::title (JText::_("COM_MAILJET_STATS"), 'logo.png' );
+        \Joomla\CMS\Toolbar\ToolbarHelper::title (\Joomla\CMS\Language\Text::_("COM_MAILJET_STATS"), 'logo.png' );
         //JToolBarHelper::save ();
         
-        $this->sidebar = JHtmlSidebar::render();
+        $this->sidebar = \Joomla\CMS\HTML\Helpers\Sidebar::render();
 
         parent::display ($tpl);
     }

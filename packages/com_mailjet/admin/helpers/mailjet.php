@@ -7,6 +7,9 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
+use Joomla\CMS\HTML\Helpers\Sidebar;
+use Joomla\CMS\Language\Text;
+
 defined('_JEXEC') or die;
 
 /**
@@ -19,33 +22,33 @@ class MailjetHelper
     /**
      * Configure the Linkbar.
      *
-     * @param   string    The name of the active view.
+     * @param   string  $vName  The name of the active view.
      *
      * @return  void
      * @since   1.6
      */
-    public static function addSubmenu($vName)
+    public static function addSubmenu(string $vName): void
     {
-        JHtmlSidebar::addEntry(
-            \Joomla\CMS\Language\Text::_('COM_MAILJET_SETTINGS'),
+        Sidebar::addEntry(
+            Text::_('COM_MAILJET_SETTINGS'),
             'index.php?option=com_mailjet&view=mailjet',
             $vName == 'mailjet'
         );
 
-        JHtmlSidebar::addEntry(
-            \Joomla\CMS\Language\Text::_('COM_MAILJET_CONTACTS'),
+        Sidebar::addEntry(
+            Text::_('COM_MAILJET_CONTACTS'),
             'index.php?option=com_mailjet&view=contacts',
             $vName == 'contacts'
         );
 
-        JHtmlSidebar::addEntry(
-            \Joomla\CMS\Language\Text::_('COM_MAILJET_CAMPAIGNS'),
+        Sidebar::addEntry(
+            Text::_('COM_MAILJET_CAMPAIGNS'),
             'index.php?option=com_mailjet&view=campaigns',
             $vName == 'campaigns'
         );
 
-        JHtmlSidebar::addEntry(
-            \Joomla\CMS\Language\Text::_('COM_MAILJET_STATS'),
+        Sidebar::addEntry(
+            Text::_('COM_MAILJET_STATS'),
             'index.php?option=com_mailjet&view=statistics',
             $vName == 'statistics'
         );
