@@ -47,7 +47,7 @@ require_once (dirname(__FILE__).'/vendor/autoload.php');
           $mailjetIframe = new \MailjetIframe\MailjetIframe($username, $password, false);
 
           // Get the current Joomla language tag (code like 'en-GB')
-          $lang = JFactory::getLanguage();
+          $lang = Factory::getApplication()->getLanguage();
 
           $mailjetIframe
               ->setCallback('')

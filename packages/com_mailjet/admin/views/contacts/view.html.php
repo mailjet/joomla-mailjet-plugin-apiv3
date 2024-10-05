@@ -28,7 +28,7 @@ if (!class_exists('JModelLegacy')) {
 $jversion = new JVersion;
 $jshort = $jversion->getShortVersion();
 
-$lang = JFactory::getLanguage();
+$lang = \Joomla\CMS\Factory::getApplication()->getLanguage();
 $extension = 'com_mailjet';
 $base_dir = JPATH_SITE;
 $language_tag =  $lang->getTag();

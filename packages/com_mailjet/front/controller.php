@@ -11,12 +11,6 @@ defined( '_JEXEC' ) or die ( 'Restricted access' );
 
 jimport('joomla.application.component.controller');
 
-if (!function_exists('class_alias')) { // For php older then 5.3
-  function class_alias($orig, $alias) {
-    eval('abstract class ' . $alias . ' extends ' . $orig . ' {}');
-  }
-}
-
 if (!class_exists('JControllerLegacy')) {
   class_alias('JController','JControllerLegacy');
 }

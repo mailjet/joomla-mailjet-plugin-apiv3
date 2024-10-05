@@ -8,19 +8,13 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-if (!function_exists('class_alias')) { // For php older then 5.3
-  function class_alias($orig, $alias) {
-    eval('abstract class ' . $alias . ' extends ' . $orig . ' {}');
-  }
-}
-
 error_reporting(E_ALL ^ E_STRICT);
 
 if (!class_exists('JControllerLegacy')) {
   class_alias('JController','JControllerLegacy');
 }
 
-$document = JFactory::getDocument();
+$document = \Joomla\CMS\Factory::getApplication()->getDocument();
 $document->addStyleDeclaration('.icon-48-logo {background-image: url('.sprintf('%s/components/%s/images/%s', '../administrator', 'com_mailjet', 'logo-48x48.png').');}');
 $document->addStyleDeclaration('.icon-48-campaigns {background-image: url('.sprintf('%s/components/%s/images/%s', '../administrator', 'com_mailjet', 'campaigns-48x48.png').');}');
 $document->addStyleDeclaration('.icon-48-stats {background-image: url('.sprintf('%s/components/%s/images/%s', '../administrator', 'com_mailjet', 'stats-48x48.png').');}');
@@ -34,7 +28,8 @@ jimport('joomla.application.component.controller');
 $controller = JControllerLegacy::getInstance('Mailjet');
 
 // Perform the Request task
-$controller->execute(JRequest::getCmd('task'));
+$input = \Joomla\CMS\Factory::getApplication()->input;
+$controller->execute($input->getCmd('task'));
 
 // Redirect if set by the controller
 $controller->redirect();
