@@ -1,6 +1,6 @@
 <?php
 /**
- * @author Mailjet SAS
+ * @author     Mailjet SAS
  *
  * @copyright  Copyright (C) 2014 Mailjet SAS.
  * @license    GNU General Public License version 2 or later; see LICENSE
@@ -10,15 +10,15 @@ defined('_JEXEC') or die('Restricted access');
 
 error_reporting(E_ALL ^ E_STRICT);
 
-if (!class_exists('JControllerLegacy')) {
-  class_alias('JController','JControllerLegacy');
+if(!class_exists('JControllerLegacy')) {
+    class_alias('JController', 'JControllerLegacy');
 }
 
 $document = \Joomla\CMS\Factory::getApplication()->getDocument();
-$document->addStyleDeclaration('.icon-48-logo {background-image: url('.sprintf('%s/components/%s/images/%s', '../administrator', 'com_mailjet', 'logo-48x48.png').');}');
-$document->addStyleDeclaration('.icon-48-campaigns {background-image: url('.sprintf('%s/components/%s/images/%s', '../administrator', 'com_mailjet', 'campaigns-48x48.png').');}');
-$document->addStyleDeclaration('.icon-48-stats {background-image: url('.sprintf('%s/components/%s/images/%s', '../administrator', 'com_mailjet', 'stats-48x48.png').');}');
-$document->addStyleDeclaration('.icon-48-contacts {background-image: url('.sprintf('%s/components/%s/images/%s', '../administrator', 'com_mailjet', 'contacts-48x48.png').');}');
+$document->addStyleDeclaration('.icon-48-logo {background-image: url(' . sprintf('%s/components/%s/images/%s', '../administrator', 'com_mailjet', 'logo-48x48.png') . ');}');
+$document->addStyleDeclaration('.icon-48-campaigns {background-image: url(' . sprintf('%s/components/%s/images/%s', '../administrator', 'com_mailjet', 'campaigns-48x48.png') . ');}');
+$document->addStyleDeclaration('.icon-48-stats {background-image: url(' . sprintf('%s/components/%s/images/%s', '../administrator', 'com_mailjet', 'stats-48x48.png') . ');}');
+$document->addStyleDeclaration('.icon-48-contacts {background-image: url(' . sprintf('%s/components/%s/images/%s', '../administrator', 'com_mailjet', 'contacts-48x48.png') . ');}');
 
 
 // import joomla controller library
