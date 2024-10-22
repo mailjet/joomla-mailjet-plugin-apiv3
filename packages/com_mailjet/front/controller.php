@@ -7,26 +7,28 @@
  */
 error_reporting(E_ALL & ~E_NOTICE);
 // no direct access
-defined( '_JEXEC' ) or die ( 'Restricted access' );
+defined('_JEXEC') or die ('Restricted access');
 
 jimport('joomla.application.component.controller');
 
 if (!class_exists('JControllerLegacy')) {
-  class_alias('JController','JControllerLegacy');
+    class_alias('JController', 'JControllerLegacy');
 }
 
-class MailjetController extends JControllerLegacy {
+class MailjetController extends JControllerLegacy
+{
 
-    function save() {
+    public function save()
+    {
         global $result;
 
         $model = $this->getModel();
 
         $result = $model->store();
         if ($result != false) {
-          $this->display();
+            $this->display();
         } else {
-          header('HTTP/1.0 404 Not Found');
+            header('HTTP/1.0 404 Not Found');
         }
     }
 }

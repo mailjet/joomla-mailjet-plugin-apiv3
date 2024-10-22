@@ -11,12 +11,6 @@ defined('_JEXEC') or die('Restricted access');
 // import Joomla view library
 jimport('joomla.application.component.view');
 
-if (!function_exists('class_alias')) { // For php older then 5.3
-  function class_alias($orig, $alias) {
-    eval('abstract class ' . $alias . ' extends ' . $orig . ' {}');
-  }
-}
-
 if (!class_exists('JViewLegacy')) {
   class_alias('JView','JViewLegacy');
 }
@@ -38,13 +32,12 @@ $lang->load($extension, $base_dir, $language_tag, $reload);
 class MailjetViewContacts extends JViewLegacy
 {
     /**
-     * HelloWorlds view display method
      * @return void
+     * @throws Exception
      */
     function display($tpl = null)
     {
         JToolBarHelper::title (JText::_("COM_MAILJET_CONTACTS"), 'logo.png' );
-        //JToolBarHelper::save ();
         
         $this->sidebar = JHtmlSidebar::render();
 

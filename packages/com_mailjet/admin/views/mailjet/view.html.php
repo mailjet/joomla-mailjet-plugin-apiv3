@@ -11,15 +11,14 @@ defined('_JEXEC') or die('Restricted access');
 // import Joomla view library
 jimport('joomla.application.component.view');
 
-if (!class_exists('JViewLegacy'))
-{
+if (!class_exists('JViewLegacy')) {
     class_alias('JView', 'JViewLegacy');
 }
 
 class MailjetViewMailjet extends JViewLegacy
 {
     /**
-     * @param   null  $tpl
+     * @param null $tpl
      *
      * @return void
      * @throws Exception

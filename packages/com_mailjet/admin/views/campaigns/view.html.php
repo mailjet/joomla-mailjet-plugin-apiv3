@@ -38,13 +38,12 @@ $lang->load($extension, $base_dir, $language_tag, $reload);
 class MailjetViewCampaigns extends JViewLegacy
 {
     /**
-     * HelloWorlds view display method
      * @return void
+     * @throws Exception
      */
     function display($tpl = null)
     {
         JToolBarHelper::title (JText::_("COM_MAILJET_CAMPAIGNS"), 'logo.png' );
-        //JToolBarHelper::save ();
 
         $this->sidebar = JHtmlSidebar::render();
         

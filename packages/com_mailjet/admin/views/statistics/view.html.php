@@ -11,18 +11,12 @@ defined('_JEXEC') or die('Restricted access');
 // import Joomla view library
 jimport('joomla.application.component.view');
 
-if (!function_exists('class_alias')) { // For php older then 5.3
-  function class_alias($orig, $alias) {
-    eval('abstract class ' . $alias . ' extends ' . $orig . ' {}');
-  }
-}
-
 if (!class_exists('JViewLegacy')) {
-  class_alias('JView','JViewLegacy');
+    class_alias('JView', 'JViewLegacy');
 }
 
 if (!class_exists('JModelLegacy')) {
-  class_alias('JModel','JModelLegacy');
+    class_alias('JModel', 'JModelLegacy');
 }
 
 $jversion = new JVersion;
@@ -31,23 +25,23 @@ $jshort = $jversion->getShortVersion();
 $lang = \Joomla\CMS\Factory::getApplication()->getLanguage();
 $extension = 'com_mailjet';
 $base_dir = JPATH_SITE;
-$language_tag =  $lang->getTag();
+$language_tag = $lang->getTag();
 $reload = true;
 $lang->load($extension, $base_dir, $language_tag, $reload);
 
 class MailjetViewStatistics extends JViewLegacy
 {
     /**
-     * @since 4.0
      * @return void
+     * @since 4.0
      */
     public function display($tpl = null)
     {
-        \Joomla\CMS\Toolbar\ToolbarHelper::title (\Joomla\CMS\Language\Text::_("COM_MAILJET_STATS"), 'logo.png' );
+        \Joomla\CMS\Toolbar\ToolbarHelper::title(\Joomla\CMS\Language\Text::_("COM_MAILJET_STATS"), 'logo.png');
         //JToolBarHelper::save ();
-        
+
         $this->sidebar = \Joomla\CMS\HTML\Helpers\Sidebar::render();
 
-        parent::display ($tpl);
+        parent::display($tpl);
     }
 }
