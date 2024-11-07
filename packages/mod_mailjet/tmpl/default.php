@@ -12,9 +12,8 @@ use Joomla\CMS\Version;
 
 
 $jversion = new Version();
-if (version_compare($jversion->getShortVersion(), '2.5', '<=')) {
-    if (Factory::getApplication()->get('jquery') !== true) {
-        // load jQuery here
+if(version_compare($jversion->getShortVersion(), '2.5', '<=')) {
+    if(Factory::getApplication()->get('jquery') !== true) {
         Joomla\CMS\HTML\HTMLHelper::script(Juri::base() . 'modules/mod_mailjet/includes/jquery-2.1.3.min.js');
         Factory::getApplication()->set('jquery', true);
     }
@@ -24,7 +23,7 @@ if (version_compare($jversion->getShortVersion(), '2.5', '<=')) {
 
 Factory::getApplication()->getDocument()->addStyleSheet(JURI::base() . "components/com_mailjet/styles.css");
 
-if (version_compare($jversion->getShortVersion(), '2.5.6', 'lt')) {
+if(version_compare($jversion->getShortVersion(), '2.5.6', 'lt')) {
     HTMLHelper::script('mod_mailjet.js', 'modules/mod_mailjet/includes/', false);
 } else {
     HTMLHelper::script(Juri::base() . 'modules/mod_mailjet/includes/mod_mailjet.js');
