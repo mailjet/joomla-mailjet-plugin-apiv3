@@ -24,8 +24,8 @@ if(!class_exists('JControllerLegacy')) {
 class MailjetController extends JControllerLegacy
 {
     /**
-     * @param   bool  $cachable
-     * @param   bool  $urlparams
+     * @param bool $cachable
+     * @param bool $urlparams
      *
      * @return void
      * @throws Exception
@@ -50,9 +50,9 @@ class MailjetController extends JControllerLegacy
     {
         Session::checkToken() or jexit('Invalid Token');
 
-        $error         = false;
+        $error = false;
         $mailjetConfig = sPrintF('%s/components/%s/config.php', JPATH_ADMINISTRATOR, 'com_mailjet');
-        $fileConfig    = JPATH_ROOT . '/configuration.php';
+        $fileConfig = JPATH_ROOT . '/configuration.php';
 
         require_once($mailjetConfig);
 
@@ -61,22 +61,22 @@ class MailjetController extends JControllerLegacy
         $prev = new JConfig();
         $prev = ArrayHelper::fromObject($prev);
 
-        $fields['bak_mailer']     = $prev['mailer'];
-        $fields['bak_smtpauth']   = $prev['smtpauth'];
-        $fields['bak_smtpuser']   = $prev['smtpuser'];
-        $fields['bak_smtppass']   = $prev['smtppass'];
-        $fields['bak_smtphost']   = $prev['smtphost'];
+        $fields['bak_mailer'] = $prev['mailer'];
+        $fields['bak_smtpauth'] = $prev['smtpauth'];
+        $fields['bak_smtpuser'] = $prev['smtpuser'];
+        $fields['bak_smtppass'] = $prev['smtppass'];
+        $fields['bak_smtphost'] = $prev['smtphost'];
         $fields['bak_smtpsecure'] = $prev['smtpsecure'];
-        $fields['bak_smtpport']   = $prev['smtpport'];
+        $fields['bak_smtpport'] = $prev['smtpport'];
 
         $data = Factory::getApplication()->input->post->getArray();
 
-        $fields['enable']       = isset($data['enable']) && $data['enable'] === 'on';
-        $fields['test']         = isset($data['test']);
+        $fields['enable'] = isset($data['enable']) && $data['enable'] === 'on';
+        $fields['test'] = isset($data['test']);
         $fields['test_address'] = $data['test_address'];
-        $fields['username']     = $data['username'];
-        $fields['password']     = $data['password'];
-        $fields['host']         = $host;
+        $fields['username'] = $data['username'];
+        $fields['password'] = $data['password'];
+        $fields['host'] = $host;
 
         $configs = [['ssl://', 465],
             ['tls://', 587],
@@ -111,8 +111,8 @@ class MailjetController extends JControllerLegacy
             Factory::getApplication()->enqueueMessage(
                 json_encode([
                     'message' => \Joomla\CMS\Language\Text::_('COM_MAILJET_CONTACT_SUPPORT_ERROR'),
-                    'error'   => $errno,
-                    'str'     => $errstr
+                    'error' => $errno,
+                    'str' => $errstr
                 ]),
                 \Joomla\CMS\Application\CMSApplication::MSG_WARNING
             );
@@ -124,7 +124,7 @@ class MailjetController extends JControllerLegacy
             Factory::getApplication()->enqueueMessage(
                 json_encode([
                     'message' => \Joomla\CMS\Language\Text::_('COM_MAILJET_RECIPIENT_INVALID'),
-                    'error'   => $fields['test_address'],
+                    'error' => $fields['test_address'],
                 ]),
                 \Joomla\CMS\Application\CMSApplication::MSG_WARNING
             );
@@ -156,11 +156,11 @@ class MailjetController extends JControllerLegacy
             }
 
             $mailjetData = sPrintF('%s/components/%s/lib/db/data', JPATH_ADMINISTRATOR, 'com_mailjet');
-            $JSONString  = json_encode([
-                'apiKey'       => $fields['username'],
-                'apiSecret'    => $fields['password'],
+            $JSONString = json_encode([
+                'apiKey' => $fields['username'],
+                'apiSecret' => $fields['password'],
                 'test_address' => $fields['test_address'],
-                'enable'       => $fields['enable'],
+                'enable' => $fields['enable'],
             ]);
 
             if(!\Joomla\Filesystem\File::write($mailjetData, $JSONString)) {
@@ -171,21 +171,21 @@ class MailjetController extends JControllerLegacy
             }
 
             if($fields['enable']) {
-                $prev['mailer']     = 'smtp';
-                $prev['smtpauth']   = '1';
-                $prev['smtpuser']   = $fields['username'];
-                $prev['smtppass']   = $fields['password'];
-                $prev['smtphost']   = $fields['host'];
+                $prev['mailer'] = 'smtp';
+                $prev['smtpauth'] = '1';
+                $prev['smtpuser'] = $fields['username'];
+                $prev['smtppass'] = $fields['password'];
+                $prev['smtphost'] = $fields['host'];
                 $prev['smtpsecure'] = $fields['secure'];
-                $prev['smtpport']   = $fields['port'];
+                $prev['smtpport'] = $fields['port'];
             } else {
-                $prev['mailer']     = $fields['bak_mailer'];
-                $prev['smtpauth']   = $fields['bak_smtpauth'];
-                $prev['smtpuser']   = $fields['bak_smtpuser'];
-                $prev['smtppass']   = $fields['bak_smtppass'];
-                $prev['smtphost']   = $fields['bak_smtphost'];
+                $prev['mailer'] = $fields['bak_mailer'];
+                $prev['smtpauth'] = $fields['bak_smtpauth'];
+                $prev['smtpuser'] = $fields['bak_smtpuser'];
+                $prev['smtppass'] = $fields['bak_smtppass'];
+                $prev['smtphost'] = $fields['bak_smtphost'];
                 $prev['smtpsecure'] = $fields['bak_smtpsecure'];
-                $prev['smtpport']   = $fields['bak_smtpport'];
+                $prev['smtpport'] = $fields['bak_smtpport'];
             }
 
             $config = new \Joomla\Registry\Registry('config');

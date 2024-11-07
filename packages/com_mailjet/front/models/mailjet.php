@@ -30,7 +30,7 @@ class MailjetModelMailjet extends JModelLegacy
     public function __construct()
     {
         parent::__construct();
-        $this->params   = $this->getAsRecord();
+        $this->params = $this->getAsRecord();
         $this->mjClient = Mailjet_Api_Helper::getMailjetClient($this->params['username'], $this->params['password']);
     }
 
@@ -41,7 +41,7 @@ class MailjetModelMailjet extends JModelLegacy
     public function store(): bool
     {
         // Get the data which we'll save
-        $email   = filter_var($_POST['mailjet-email'], FILTER_SANITIZE_EMAIL);
+        $email = filter_var($_POST['mailjet-email'], FILTER_SANITIZE_EMAIL);
         $list_id = filter_var($_POST['mailjet-list_id'], FILTER_SANITIZE_NUMBER_INT);
         if(empty($email)) {
             $email = filter_var($_GET['mailjet-email'], FILTER_SANITIZE_EMAIL);
@@ -55,7 +55,7 @@ class MailjetModelMailjet extends JModelLegacy
 
         $body = [
             'Action' => 'addforce',
-            'Email'  => $email
+            'Email' => $email
         ];
 
         $response = $this->mjClient->post(\Mailjet\Resources::$ContactslistManagecontact, ['id' => $list_id, 'body' => $body]);
@@ -77,7 +77,7 @@ class MailjetModelMailjet extends JModelLegacy
 
         if(file_exists($credentials)) {
             $pre_data = null;
-            $content  = trim(file_get_contents($credentials));
+            $content = trim(file_get_contents($credentials));
             if($content) {
                 $pre_data = json_decode($content);
             }

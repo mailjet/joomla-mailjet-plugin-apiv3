@@ -34,11 +34,11 @@ class MailjetViewCampaigns extends JViewLegacy
     /**
      * @since 4.0
      * @return void
+     * @throws Exception
      */
     public function display($tpl = null)
     {
         \Joomla\CMS\Toolbar\ToolbarHelper::title(\Joomla\CMS\Language\Text::_("COM_MAILJET_CAMPAIGNS"), 'logo.png');
-        //JToolBarHelper::save ();
 
         $this->sidebar = \Joomla\CMS\HTML\Helpers\Sidebar::render();
 

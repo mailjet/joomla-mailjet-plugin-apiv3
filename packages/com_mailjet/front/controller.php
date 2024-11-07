@@ -17,6 +17,7 @@ if(!class_exists('JControllerLegacy')) {
 
 class MailjetController extends JControllerLegacy
 {
+
     public function save()
     {
         global $result;

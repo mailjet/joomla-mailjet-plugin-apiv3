@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="package" version="4.0">
+<extension type="package" version="4.1">
     <name>Mailjet Email Marketing</name>
     <author>Mailjet SAS</author>
     <authorUrl>http://www.mailjet.com</authorUrl>
     <authorEmail>plugins@mailjet.com</authorEmail>
     <creationDate>June 2014</creationDate>
     <url>http://www.mailjet.com/</url>
-    <version>4.0</version>
+    <version>4.1</version>
     <packagename>mailjet</packagename>
     <packager>Mailjet SAS</packager>
     <packagerurl>http://www.mailjet.com/</packagerurl>

@@ -18,7 +18,7 @@ if(!class_exists('JViewLegacy')) {
 class MailjetViewMailjet extends JViewLegacy
 {
     /**
-     * @param   null  $tpl
+     * @param null $tpl
      * @return void
      * @throws Exception
      * @since 4.0

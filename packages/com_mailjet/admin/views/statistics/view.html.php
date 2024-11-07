@@ -38,7 +38,7 @@ class MailjetViewStatistics extends JViewLegacy
     public function display($tpl = null)
     {
         \Joomla\CMS\Toolbar\ToolbarHelper::title(\Joomla\CMS\Language\Text::_("COM_MAILJET_STATS"), 'logo.png');
-
+        
         $this->sidebar = \Joomla\CMS\HTML\Helpers\Sidebar::render();
 
         parent::display($tpl);
