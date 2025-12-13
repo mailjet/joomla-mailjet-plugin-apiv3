@@ -34,6 +34,17 @@
                        default="Subscribe"/>
                 <field name="email_label" type="text" label="Email label" description="Label for the email input field"
                        default="Email"/>
+                <field name="email_placeholder" type="text" label="Email placeholder"
+                       description="Placeholder for the email input field" default=""/>
+                <field name="name_enabled" type="radio" label="Enable name field"
+                       description="Show an optional name field in the subscription form" default="0">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="name_label" type="text" label="Name label" description="Label for the name input field"
+                       default="Name"/>
+                <field name="name_placeholder" type="text" label="Name placeholder"
+                       description="Placeholder for the name input field" default=""/>
                 <field name="title" type="text" label="Widget title" description="Title of the widget"
                        default="Subscription"/>
                 <field name="success" type="text" label="Success message" description="Subscription success message"

@@ -37,8 +37,23 @@ defined('_JEXEC') or die;
 <div class="mailjet<?php echo $moduleclass_sfx ?>">
     <h3><?php echo $module->title; ?></h3>
     <form class="mailjet-subscribe">
+        <?php if($module->name_enabled): ?>
+            <label for="mailjet-name"><?php echo $module->name_label; ?></label>
+            <input
+                type="text"
+                name="mailjet-name"
+                id="mailjet-name"
+                placeholder="<?php echo htmlspecialchars($module->name_placeholder ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+            />
+        <?php endif; ?>
+
         <label for="mailjet-email"><?php echo $module->label; ?></label>
-        <input type="email" name="mailjet-email" id="mailjet-email"/>
+        <input
+            type="email"
+            name="mailjet-email"
+            id="mailjet-email"
+            placeholder="<?php echo htmlspecialchars($module->placeholder ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+        />
         <button type="submit"><?php echo $module->button_text; ?></button>
 
 

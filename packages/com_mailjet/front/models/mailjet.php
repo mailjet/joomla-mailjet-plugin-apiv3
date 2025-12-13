@@ -42,6 +42,8 @@ class MailjetModelMailjet extends JModelLegacy
     {
         // Get the data which we'll save
         $email = filter_var($_POST['mailjet-email'], FILTER_SANITIZE_EMAIL);
+        $nameRaw = $_POST['mailjet-name'] ?? '';
+        $name = filter_var($nameRaw, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $list_id = filter_var($_POST['mailjet-list_id'], FILTER_SANITIZE_NUMBER_INT);
         if(empty($email)) {
             $email = filter_var($_GET['mailjet-email'], FILTER_SANITIZE_EMAIL);
@@ -57,6 +59,10 @@ class MailjetModelMailjet extends JModelLegacy
             'Action' => 'addforce',
             'Email' => $email
         ];
+
+        if(!empty($name)) {
+            $body['Name'] = $name;
+        }
 
         $response = $this->mjClient->post(\Mailjet\Resources::$ContactslistManagecontact, ['id' => $list_id, 'body' => $body]);
         if($response->success()) {
