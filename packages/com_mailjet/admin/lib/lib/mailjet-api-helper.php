@@ -11,6 +11,8 @@
 
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+
 require_once (dirname(__FILE__).'/vendor/autoload.php');
 
 
