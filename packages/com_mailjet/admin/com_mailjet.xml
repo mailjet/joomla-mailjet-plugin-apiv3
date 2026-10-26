@@ -6,7 +6,7 @@
     <authorEmail>plugins@mailjet.com</authorEmail>
     <creationDate>June 2014</creationDate>
     <url>https://www.mailjet.com/</url>
-    <version>4.1</version>
+    <version>4.3</version>
     <copyright>Copyright (C) 2014 Mailjet SAS.</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE</license>
     <description>Mailjet Email component.</description>

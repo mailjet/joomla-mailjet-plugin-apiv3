@@ -81,6 +81,11 @@ Once your Mailjet plugin is installed, click on "Extensions" in the top menu and
 
 ## Changelog
 
+= 4.3 =
+* Security: all Mailjet API calls are sent over HTTPS (ahead of the Mailjet API HTTP deprecation). Previously every API call was forced to plain HTTP
+* User-Agent sent to the Mailjet API updated to the extension version
+* Manifest and documentation links switched to HTTPS
+
 = 4.1 =
 * Make plugin compatible with Joomla 5.
 
