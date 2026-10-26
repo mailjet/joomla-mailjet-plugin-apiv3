@@ -2,10 +2,10 @@
 <extension type="component" version="4.1">
     <name>Mailjet</name>
     <author>Mailjet SAS</author>
-    <authorUrl>http://www.mailjet.com</authorUrl>
+    <authorUrl>https://www.mailjet.com</authorUrl>
     <authorEmail>plugins@mailjet.com</authorEmail>
     <creationDate>June 2014</creationDate>
-    <url>http://www.mailjet.com/</url>
+    <url>https://www.mailjet.com/</url>
     <version>4.1</version>
     <copyright>Copyright (C) 2014 Mailjet SAS.</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE</license>

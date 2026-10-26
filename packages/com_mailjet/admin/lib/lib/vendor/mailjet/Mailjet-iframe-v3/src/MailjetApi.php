@@ -196,7 +196,7 @@ class MailjetApi
         if ($secretKey) {
             $this->_secretKey = $secretKey;
         }
-        $this->_apiUrl = (($this->_secure) ? 'https' : 'http') . '://api' . $this->env . 'mailjet.com/v3/' . $this->_version;
+        $this->_apiUrl = 'https://api' . $this->env . 'mailjet.com/v3/' . $this->_version;
     }
 
     /**
@@ -230,7 +230,7 @@ class MailjetApi
             $this->_debugRequest = $request;
         }
 
-        $this->_debugCallUrl = $this->_apiUrl = $url = (($this->_secure) ? 'https' : 'http') . '://api' . $this->env . 'mailjet.com/v3/DATA/' . $method . '/' . $id . '/' . $type
+        $this->_debugCallUrl = $this->_apiUrl = $url = 'https://api' . $this->env . 'mailjet.com/v3/DATA/' . $method . '/' . $id . '/' . $type
             . '/' . $contType;
 
 
@@ -368,16 +368,13 @@ class MailjetApi
      *
      * @access    public
      * @uses    Mailjet::Api::$_apiUrl
-     * @param boolean $secure TRUE to secure the transaction, FALSE otherwise
+     * @param boolean $secure Ignored, HTTPS is always used
      */
     public function secure($secure = TRUE)
     {
-        $this->_secure = $secure;
-        $protocol = 'http';
-        if ($secure) {
-            $protocol = 'https';
-        }
-        $this->_apiUrl = preg_replace('/http(s)?:\/\//', $protocol . '://', $this->_apiUrl);
+        // The Mailjet API is HTTPS-only: the flag is kept for backward compatibility and ignored.
+        $this->_secure = TRUE;
+        $this->_apiUrl = preg_replace('/^http:\/\//i', 'https://', $this->_apiUrl);
     }
 
     /**
@@ -527,7 +524,7 @@ class MailjetApi
 
     public function resetRequest()
     {
-        $this->_apiUrl = (($this->_secure) ? 'https' : 'http') . '://api' . $this->env . 'mailjet.com/v3/' . $this->_version;
+        $this->_apiUrl = 'https://api' . $this->env . 'mailjet.com/v3/' . $this->_version;
         $this->_request_post = false;
     }
 
