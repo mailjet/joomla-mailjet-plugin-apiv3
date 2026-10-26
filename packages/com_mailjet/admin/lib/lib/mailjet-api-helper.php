@@ -36,9 +36,10 @@ require_once (dirname(__FILE__).'/vendor/autoload.php');
       public static function getMailjetClient($username, $password)
       {
           $mjClient = new \Mailjet\Client($username, $password);
-          $mjClient->addRequestOption(CURLOPT_USERAGENT, 'joomla-3.2.1');
-          $mjClient->addRequestOption('headers', ['User-Agent' => 'joomla-3.2.1']);
-          $mjClient->setSecureProtocol(false);
+          $mjClient->addRequestOption(CURLOPT_USERAGENT, 'joomla-4.3');
+          $mjClient->addRequestOption('headers', ['User-Agent' => 'joomla-4.3']);
+          // The Mailjet API is HTTPS-only: never send API calls over plain HTTP
+          $mjClient->setSecureProtocol(true);
 
           return $mjClient;
       }

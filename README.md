@@ -50,7 +50,7 @@ Our plugin simply overrides the Joomla mail settings, to use Mailjet's SMTP inst
 ## Frequently Asked Questions
 
 ### What is Mailjet?
-[Mailjet](http://www.mailjet.com) is an all-in-one solution to send, track and deliver both marketing and transactional emails. Its Cloud-Based infrastructure is unique and highly scalable. A proprietary technology optimizes the sending and the deliverability of your messages.
+[Mailjet](https://www.mailjet.com) is an all-in-one solution to send, track and deliver both marketing and transactional emails. Its Cloud-Based infrastructure is unique and highly scalable. A proprietary technology optimizes the sending and the deliverability of your messages.
 
 ### Why use Mailjet as an SMTP relay for Joomla ?
 1 in 4 legitimate email gets lost or ends up a the spam folder. By Sending your email through Mailjet's SMTP relay, you will avoid this and make sure that your recipients receive your messages in real time, straight into their inbox. You will also be able to track the delivery (opens, bounces, etc.) as well as the activity of your emails (clicks, opens, etc.). On top of that, tools such as our Newsletter editor will let you create and send a beautiful marketing campaign in only a few minutes. All this added value comes with no engagement and very low prices.
@@ -80,6 +80,11 @@ Once your Mailjet plugin is installed, click on "Extensions" in the top menu and
 
 
 ## Changelog
+
+= 4.3 =
+* Security: all Mailjet API calls are sent over HTTPS (ahead of the Mailjet API HTTP deprecation). Previously every API call was forced to plain HTTP
+* User-Agent sent to the Mailjet API updated to the extension version
+* Manifest and documentation links switched to HTTPS
 
 = 4.1 =
 * Make plugin compatible with Joomla 5.
